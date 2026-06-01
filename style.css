@@ -462,6 +462,33 @@ h1, h2, h3, h4 {
   background-clip: text;
 }
 
+/* Typewriter Effect */
+.hero-title[data-typewriter] .tw-line {
+  display: block;
+  min-height: 1em;
+}
+
+.tw-cursor {
+  display: inline-block;
+  width: 4px;
+  height: 0.78em;
+  background: var(--orange);
+  margin-left: 0.06em;
+  vertical-align: -0.04em;
+  animation: tw-blink 0.85s step-end infinite;
+  border-radius: 1px;
+  box-shadow: 0 0 14px rgba(255,122,26,.55);
+}
+
+@keyframes tw-blink {
+  0%, 50%    { opacity: 1; }
+  51%, 100%  { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-cursor { display: none; }
+}
+
 .hero-subtitle {
   font-size: 1.0625rem;
   color: rgba(248,249,250,.7);

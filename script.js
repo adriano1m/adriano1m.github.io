@@ -232,7 +232,57 @@ function showToast(message) {
 }
 
 /* ============================================================
-   8. SMOOTH SCROLL OFFSET — account for fixed navbar height
+   8. TYPEWRITER — hero title
+============================================================ */
+(function initTypewriter() {
+  const title = document.querySelector('[data-typewriter]');
+  if (!title) return;
+
+  // Acessibilidade: respeitar prefers-reduced-motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const lines  = Array.from(title.querySelectorAll('.tw-line'));
+  const cursor = title.querySelector('.tw-cursor');
+  if (!lines.length || !cursor) return;
+
+  // Captura o texto original (SEO preservado no HTML antes do JS rodar)
+  const texts = lines.map(function (l) { return l.textContent.trim(); });
+  lines.forEach(function (l) { l.textContent = ''; });
+
+  let lineIdx = 0;
+  let charIdx = 0;
+  const speed  = 50;   // ms por caractere
+  const pause  = 260;  // pausa entre linhas
+  const jitter = 35;   // variação pra parecer humano
+
+  function step() {
+    if (lineIdx >= lines.length) {
+      lines[lines.length - 1].appendChild(cursor);
+      return;
+    }
+
+    const line = lines[lineIdx];
+    const text = texts[lineIdx];
+
+    if (charIdx === 0) line.appendChild(cursor);
+
+    if (charIdx < text.length) {
+      line.insertBefore(document.createTextNode(text[charIdx]), cursor);
+      charIdx++;
+      setTimeout(step, speed + Math.random() * jitter);
+    } else {
+      lineIdx++;
+      charIdx = 0;
+      setTimeout(step, pause);
+    }
+  }
+
+  // Inicia logo após o fade-in do hero
+  setTimeout(step, 650);
+})();
+
+/* ============================================================
+   9. SMOOTH SCROLL OFFSET — account for fixed navbar height
 ============================================================ */
 (function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
