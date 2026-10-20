@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treino da Proprietária do Caio</title>
+  <style>
+    :root{--bg:#fff9f6;--ink:#302726;--muted:#7d6d69;--accent:#d86f63;--accent2:#f7ded7;--line:#ead9d4;--card:#fff;--shadow:0 12px 35px rgba(105,65,57,.10)}
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(135deg,#fff9f6,#fdf0ec);color:var(--ink);font:16px/1.5 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .wrap{max-width:920px;margin:0 auto;padding:28px 18px 50px}.hero{background:var(--ink);color:#fff;border-radius:28px;padding:30px 28px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:210px;height:210px;border-radius:50%;right:-60px;top:-75px;background:var(--accent);opacity:.8}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:#f6c8bd;font-weight:700}.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.05;margin:8px 0 12px;max-width:620px;position:relative;z-index:1}.hero p{margin:0;color:#f2dfda;max-width:620px;position:relative;z-index:1}.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;position:relative;z-index:1}.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:7px 11px;border-radius:999px;font-size:13px}
+    .intro{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}.info{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--shadow)}.info strong{display:block;margin-bottom:4px}.info span{color:var(--muted);font-size:14px}
+    .week{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 26px}.day{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}.day b{display:block;color:var(--accent);font-size:13px}.day span{display:block;margin-top:4px;font-weight:700;font-size:14px}
+    .workout{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;margin:16px 0;box-shadow:var(--shadow)}.workout-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:10px}.workout h2{font-size:22px;margin:0}.workout small{display:block;color:var(--muted);margin-top:3px}.badge{background:var(--accent2);color:#9b4f45;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:700;white-space:nowrap}.exercise{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid #f1e7e3}.exercise:last-child{border-bottom:0}.exercise a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:#e9aaa0;text-underline-offset:3px}.exercise a:after{content:" ↗";color:var(--accent);font-size:13px}.sets,.reps{color:var(--muted);font-size:14px;white-space:nowrap}.cardio{margin-top:16px;background:#fff2ee;border-radius:16px;padding:14px;color:#85483f;font-weight:700}.cardio span{font-weight:400;color:#855f59;font-size:14px;display:block;margin-top:2px}.note{color:var(--muted);font-size:14px;margin:22px 2px}.footer{font-size:12px;color:var(--muted);text-align:center;margin-top:26px}
+    @media(max-width:650px){.intro,.week{grid-template-columns:1fr 1fr}.workout{padding:18px}.workout-head{display:block}.badge{display:inline-block;margin-top:12px}.exercise{grid-template-columns:1fr auto;gap:8px}.exercise .reps{grid-column:2;grid-row:1}.sets{grid-column:2;grid-row:2}.exercise a{grid-row:1 / span 2}.hero{padding:25px 21px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Plano inicial • 4 dias por semana</div>
+      <h1>Treino da Proprietária do Caio</h1>
+      <p>Uma rotina simples com halteres para voltar ao ritmo, fortalecer o corpo e apoiar o objetivo de emagrecimento.</p>
+      <div class="meta"><span class="pill">⏱ cerca de 1 hora</span><span class="pill">🏋️ somente halteres</span><span class="pill">🚶 cardio no final</span></div>
+    </section>
+
+    <section class="intro">
+      <div class="info"><strong>Como funciona</strong><span>5 min de aquecimento + exercícios de força + 30 a 35 min de cardio.</span></div>
+      <div class="info"><strong>Intensidade</strong><span>Use pesos leves no início e priorize movimentos controlados.</span></div>
+    </section>
+
+    <section class="week" aria-label="Organização semanal">
+      <div class="day"><b>SEG</b><span>Pernas e glúteos</span></div><div class="day"><b>TER</b><span>Parte superior</span></div><div class="day"><b>QUI</b><span>Pernas e glúteos</span></div><div class="day"><b>SEX</b><span>Corpo inteiro</span></div>
+    </section>
+
+    <div id="workouts"></div>
+    <p class="note">Clique no nome de qualquer exercício para abrir uma demonstração em vídeo. Descanse 45 a 60 segundos entre as séries. Se sentir dor na cicatriz, pressão pélvica, perda urinária ou dor lombar, interrompa o exercício e procure avaliação profissional.</p>
+    <div class="footer">Plano inicial • Ajustar cargas e exercícios conforme evolução e orientação profissional.</div>
+  </main>
+  <script>
+    const workouts = [
+      {day:'Segunda-feira', title:'Pernas e glúteos', focus:'Força e estabilidade', items:[['Agachamento com halteres',3,'10 repetições'],['Elevação pélvica com halter',3,'12 repetições'],['Afundo para trás',2,'8 por perna'],['Levantamento terra com halteres',3,'10 repetições']], cardio:'30 a 35 min de caminhada, bicicleta ou elíptico'},
+      {day:'Terça-feira', title:'Braços, costas e postura', focus:'Parte superior do corpo', items:[['Remada curvada com halteres',3,'10 repetições'],['Supino no chão com halteres',3,'10 repetições'],['Desenvolvimento de ombros',3,'10 repetições'],['Elevação lateral',2,'12 repetições'],['Rosca bíceps',2,'12 repetições']], cardio:'30 a 35 min de cardio moderado'},
+      {day:'Quinta-feira', title:'Pernas e glúteos', focus:'Variação do treino de pernas', items:[['Agachamento sumô com halter',3,'10 repetições'],['Passada para trás',2,'8 por perna'],['Elevação pélvica com pausa',3,'12 repetições'],['Agachamento com halter junto ao peito',3,'10 repetições'],['Abdução de quadril deitada',2,'15 por lado']], cardio:'30 a 35 min de caminhada, bicicleta ou elíptico'},
+      {day:'Sexta-feira', title:'Corpo inteiro', focus:'Movimentos integrados', items:[['Agachamento com elevação dos braços',3,'10 repetições'],['Remada unilateral',3,'10 por lado'],['Levantamento terra com halteres',3,'10 repetições'],['Supino no chão',3,'10 repetições'],['Marcha parada com halteres leves',2,'30 segundos'],['Dead bug',2,'8 por lado']], cardio:'30 a 35 min de cardio moderado'}
+    ];
+    const root = document.querySelector('#workouts');
+    const searchUrl = name => 'https://www.youtube.com/results?search_query=' + encodeURIComponent(name + ' execução correta');
+    root.innerHTML = workouts.map(w => `<section class="workout"><div class="workout-head"><div><h2>${w.day} · ${w.title}</h2><small>${w.focus}</small></div><span class="badge">Halteres</span></div>${w.items.map(i => `<div class="exercise"><a href="${searchUrl(i[0])}" target="_blank" rel="noopener">${i[0]}</a><span class="sets">${i[1]} séries</span><span class="reps">${i[2]}</span></div>`).join('')}<div class="cardio">🔥 Cardio ao final <span>${w.cardio}</span></div></section>`).join('');
+  </script>
+</body>
+</html>
